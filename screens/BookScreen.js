@@ -3,13 +3,14 @@ import { View, StyleSheet, ScrollView, StatusBar, SafeAreaView, TouchableOpacity
 import { Text, Card, useTheme, IconButton } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-// Import categories from database
+// Import databases
 import { categories } from '../data/categoryDatabase';
+import { courts } from '../data/courtDatabase';
 
 export default function BookScreen({ navigation }) {
   const theme = useTheme();
   const [selectedCategory, setSelectedCategory] = useState('overall');
-  
+
   return (
     <View style={{ flex: 1 }}>
       <SafeAreaView style={{ flex: 0, backgroundColor: theme.colors.primary }} />
@@ -85,7 +86,10 @@ export default function BookScreen({ navigation }) {
             {/* You Been To Section */}
             <View style={styles.section}>
               <Text variant="titleLarge" style={styles.sectionTitle}>You Been To</Text>
-              <Card style={styles.card} onPress={() => navigation.navigate('BookingDetail')}>
+              <Card 
+                style={styles.card} 
+                onPress={() => navigation.navigate('BookingDetail', { courtId: 1 })}
+              >
                 <Card.Cover source={require('../assets/booking/basketball-court.jpg')} />
                 <Card.Content style={styles.cardContent}>
                   <View style={styles.cardHeader}>
@@ -102,7 +106,10 @@ export default function BookScreen({ navigation }) {
             {/* Courts Nearby Section */}
             <View style={styles.section}>
               <Text variant="titleLarge" style={styles.sectionTitle}>Courts Nearby</Text>
-              <Card style={styles.card} onPress={() => navigation.navigate('BookingDetail')}>
+              <Card 
+                style={styles.card} 
+                onPress={() => navigation.navigate('BookingDetail', { courtId: 2 })}
+              >
                 <Card.Cover source={require('../assets/booking/basketball-court-2.jpg')} />
                 <Card.Content style={styles.cardContent}>
                   <View style={styles.cardHeader}>
